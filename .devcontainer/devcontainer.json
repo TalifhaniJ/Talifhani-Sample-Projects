@@ -1,1 +1,59 @@
 
+{
+    "name": "Ubuntu Dev Container with Pandoc/TeXLive",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "codespace"
+        }
+    },
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "pdflatex",
+                "tools": ["pdflatex"]
+            },
+            {
+                "name": "xelatex",
+                "tools": ["xelatex"]
+            }
+        ],
+        "latex-workshop.latex.tools": [
+            {
+                "name": "pdflatex",
+                "command": "pdflatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOC%"
+                ]
+            },
+            {
+                "name": "xelatex",
+                "command": "xelatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOC%"
+                ]
+            }
+        ]
+    },
+    "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "james-yu.latex-workshop"
+    ],
+    "remoteUser": "codespace",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    }
+}
